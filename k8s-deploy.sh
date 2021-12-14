@@ -4,7 +4,7 @@ echo "生成部署k8s的 yaml 模板文件"
 
 cat > app_rollback_${2}.yaml <<EOF
 
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: production
@@ -28,7 +28,7 @@ spec:
       containers:
       - name: $project_name
         #发布时拉取最新版本的镜像
-        image: xianchao/jenkins-demo:<BUILD_TAG>
+        image: zhangdawei838/jenkins-demo:<BUILD_TAG>
         imagePullPolicy: IfNotPresent
 
 ---
